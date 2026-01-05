@@ -1,0 +1,854 @@
+:root {
+    --bg-dark: #1e0b36;
+    /* Deep Purple */
+    --bg-gradient-start: #230b42;
+    --bg-gradient-end: #0f0524;
+    --accent-pink: #d53bf6;
+    --accent-purple: #7425c9;
+    --text-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --card-bg: #fff;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at 50% 0%, #461475 0%, #15062a 50%, #0d021c 100%);
+    color: var(--text-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.desktop-nav a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+    color: var(--text-white);
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background: rgba(20, 5, 40, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: right 0.3s ease;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu-close {
+    align-self: flex-end;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.mobile-menu a {
+    font-size: 1.2rem;
+    color: var(--text-white);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 10;
+    max-width: 40%;
+}
+
+.main-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 5rem;
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    background: linear-gradient(to bottom, #fff, #bbb);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    backdrop-filter: blur(5px);
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-text {
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+.btn-primary {
+    background: #a912bb;
+    /* Pinkish Purple */
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(169, 18, 187, 0.4);
+}
+
+.hero-visual {
+    position: relative;
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blob-bg {
+    position: absolute;
+    width: 600px;
+    height: 500px;
+    background: linear-gradient(135deg, #d338f3 0%, #681ebb 100%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    filter: blur(40px);
+    opacity: 0.6;
+    z-index: 1;
+    transform: rotate(-10deg);
+}
+
+/* Use a Pseudo-element for the sharp shape from image if needed, but blur is safer for "recreating logically" */
+/* Let's make it a bit sharper to look like the blob in the image */
+.blob-bg {
+    filter: none;
+    opacity: 1;
+    border-radius: 26% 74% 53% 47% / 28% 55% 45% 72%;
+    box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.fumot-image-container {
+    position: relative;
+    z-index: 5;
+
+}
+
+.hero-shoe-img {
+    filter: drop-shadow(10px 20px 20px rgba(0, 0, 0, 0.5));
+    width: 500px;
+    height: auto;
+    transform: scale(1.1);
+}
+
+
+/* Products Section */
+.products-section {
+    display: flex;
+    gap: 60px;
+    padding: 60px 40px;
+    align-items: flex-start;
+}
+
+.featured-product-card {
+    flex: 0 0 35%;
+}
+
+.card-glow-wrapper {
+    background: #fff;
+    border-radius: 30px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(213, 59, 246, 0.2),
+        -10px 10px 0px rgba(213, 59, 246, 0.05);
+    /* neon offset effect */
+}
+
+/* Neon line effect behind/around the card */
+.card-glow-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: -20px;
+    bottom: -20px;
+    border: 2px solid #d53bf6;
+    border-radius: 30px;
+    z-index: -1;
+    box-shadow: 0 0 15px #d53bf6;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-brand-icon {
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+
+.featured-shoe-img {
+    width: 100%;
+    transform: rotate(-10deg);
+    filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* Right Side Grid */
+.product-list-container {
+    flex: 1;
+}
+
+/* Stats Panel */
+.stats-container {
+    background: #0f0524;
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    min-height: 200px;
+    /* Ensure it matches grid height somewhat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(116, 37, 201, 0.2);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #9b72ee, #cf9af8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.list-header h3 {
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.list-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.list-nav .nav-text {
+    font-size: 0.9rem;
+    color: var(--text-white);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.product-card-small {
+    /* bg transparent? or very transparent white */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.small-card-img-box {
+    background: #fff;
+    border-radius: 35px;
+    /* Rounder borders */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    box-shadow: 0 10px 25px rgba(116, 37, 201, 0.15);
+    /* Little violet shadow */
+    transition: box-shadow 0.3s ease, border-radius 0.3s ease;
+    overflow: hidden;
+}
+
+.small-card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.small-card-info h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.small-card-info p {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    margin: 2px 0 5px;
+}
+
+.small-card-info .price {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+
+/* Image zoom on hover */
+.product-card-small:hover img {
+    transform: scale(1.08);
+}
+
+/* ===== Text ===== */
+.small-card-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.small-card-info p {
+    font-size: 12px;
+    color: #cbd5f5;
+    opacity: 0.85;
+}
+
+
+/* Product Detail Text Section */
+.product-details-text {
+    padding: 0 40px 60px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    align-items: flex-start;
+}
+
+.detail-left h2 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.detail-left h3 {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-gray);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.detail-left .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+
+
+.detail-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-buy-now {
+    background: linear-gradient(90deg, #9b72ee, #cf9af8);
+    border: none;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(155, 114, 238, 0.4);
+    position: relative;
+}
+
+.cursor-pointer {
+    position: absolute;
+    bottom: -15px;
+    right: -10px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.glass-boxes {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.g-box {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.detail-right-graphics {
+    position: relative;
+    height: 100px;
+}
+
+.chat-bubbles {
+    position: absolute;
+    top: -40px;
+    right: 150px;
+}
+
+.bubble {
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(135deg, #7b3eb5, #5a268a);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #5a268a transparent transparent transparent;
+    transform: skew(-10deg);
+}
+
+.payment-graphic {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.card-shape {
+    width: 100px;
+    height: 60px;
+    background: linear-gradient(135deg, #7b3eb5, #9b72ee);
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    transform: rotate(-10deg);
+}
+
+.chip {
+    width: 15px;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.shield {
+    margin-left: -20px;
+    z-index: 2;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Footer UI */
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 60px 40px 20px;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.col h4 {
+    color: #888;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.col a {
+    display: block;
+    color: var(--text-gray);
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+}
+
+.col a:hover {
+    color: var(--text-white);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+    font-size: 0.75rem;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.shipping-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .main-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-shoe-img {
+        width: 350px;
+    }
+
+    .featured-product-card {
+        flex: 0 0 45%;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-glow-wrapper::before {
+        display: none;
+    }
+
+    /* Simplify complex shadows on tablet */
+}
+
+@media (max-width: 768px) {
+
+    /* Navigation */
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    /* Hero */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-visual {
+        width: 100%;
+    }
+
+    .blob-bg {
+        width: 300px;
+        height: 300px;
+    }
+
+    .hero-shoe-img {
+        width: 280px;
+    }
+
+    /* Products */
+    .products-section {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .featured-product-card {
+        width: 100%;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        /* 1 col for cards on mobile */
+    }
+
+    /* Product Details */
+    .product-details-text {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .detail-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-center {
+        order: 2;
+        margin-bottom: 40px;
+    }
+
+    .detail-left {
+        order: 1;
+    }
+
+    .detail-right-graphics {
+        order: 3;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .chat-bubbles,
+    .payment-graphic {
+        position: static;
+        margin: 0;
+    }
+
+    /* Footer */
+    .footer-columns {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .col {
+        width: 45%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+/* =========================================
+   Animations
+   ========================================= */
+
+/* Use a larger initial offset for a dramatic effect */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Base class for elements to be animated */
+/* We set opacity to 0 initially so they don't flash before animating */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+/* 
+   When the .active class is added (via JS IntersectionObserver):
+   We reset opacity and transform to default (which is what 'to' does effectively).
+   However, for more control with keyframes, we often just add the animation name.
+   
+   Here, we will specific animation classes that apply the keyframe animation
+   once the base .active class is present.
+*/
+
+.animate-slide-left.active {
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-right.active {
+    animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-fade-up.active {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Delays for staggered effects if needed */
+.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-300 {
+    animation-delay: 0.3s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+}
+
+.delay-600 {
+    animation-delay: 0.6s;
+}
+
+/* Enhanced Hover Effects */
+.product-card-small {
+    /* Ensure the transition property is ready for the transform change */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+}
+
+.product-card-small:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.product-card-small:hover .small-card-img-box {
+    box-shadow: 0 15px 30px rgba(116, 37, 201, 0.2);
+    border: 1px solid rgba(213, 59, 246, 0.3);
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* Ensure the image inside also transitions nicely (existing rule modified/checked) */
+.product-card-small:hover img {
+    transform: scale(1.1) rotate(-5deg);
+    /* Added rotation for dynamic feel */
+    transition: transform 0.4s ease;
+}
