@@ -53,6 +53,12 @@ header {
     align-items: center;
 }
 
+.logo img {
+    height: 90px;
+    /* Resize logo */
+    width: auto;
+}
+
 .desktop-nav {
     display: flex;
     gap: 20px;
@@ -167,11 +173,59 @@ header {
 .btn-primary {
     background: #a912bb;
     /* Pinkish Purple */
-    padding: 10px 25px;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 10px 40px;
+    border-radius: 50px;
+    height: 56px;
+    font-size: 1rem;
+    font-weight: 700;
     box-shadow: 0 4px 15px rgba(169, 18, 187, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.1;
+    min-width: 200px;
+}
+
+.btn-primary .btn-main-text {
+    font-size: 1rem;
+}
+
+.btn-primary .btn-micro {
+    font-size: 0.65rem;
+    font-weight: 400;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(169, 18, 187, 0.6);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-white);
+    padding: 0 35px;
+    height: 56px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-white);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
 }
 
 .hero-visual {
@@ -187,19 +241,9 @@ header {
     width: 600px;
     height: 500px;
     background: linear-gradient(135deg, #d338f3 0%, #681ebb 100%);
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    filter: blur(40px);
-    opacity: 0.6;
+    border-radius: 26% 74% 53% 47% / 28% 55% 45% 72%;
     z-index: 1;
     transform: rotate(-10deg);
-}
-
-/* Use a Pseudo-element for the sharp shape from image if needed, but blur is safer for "recreating logically" */
-/* Let's make it a bit sharper to look like the blob in the image */
-.blob-bg {
-    filter: none;
-    opacity: 1;
-    border-radius: 26% 74% 53% 47% / 28% 55% 45% 72%;
     box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -373,16 +417,7 @@ header {
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
-.small-card-info h4 {
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.small-card-info p {
-    font-size: 0.75rem;
-    color: var(--text-gray);
-    margin: 2px 0 5px;
-}
+/* Typography overridden below */
 
 .small-card-info .price {
     font-size: 0.8rem;
@@ -391,9 +426,7 @@ header {
 
 
 /* Image zoom on hover */
-.product-card-small:hover img {
-    transform: scale(1.08);
-}
+/* Image zoom on hover handled in animations section */
 
 /* ===== Text ===== */
 .small-card-info h4 {
@@ -463,6 +496,12 @@ header {
     cursor: pointer;
     box-shadow: 0 5px 20px rgba(155, 114, 238, 0.4);
     position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-buy-now:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(155, 114, 238, 0.6);
 }
 
 .cursor-pointer {
@@ -551,6 +590,123 @@ header {
     margin-left: -20px;
     z-index: 2;
     filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+.locations-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.locations-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+}
+
+.locations-header h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-white);
+    margin: 0;
+}
+
+.locations-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.locations-arrow.open {
+    transform: rotate(180deg);
+}
+
+.locations-list {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.locations-list.open {
+    display: flex;
+}
+
+.locations-list a {
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.locations-list a:hover {
+    color: var(--text-white);
+    text-decoration: underline;
+}
+
+/* Reviews Section */
+.reviews-section {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.reviews-section h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.reviews-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: left;
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.review-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-5px);
+}
+
+.review-date {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    margin-bottom: 5px;
+}
+
+.review-author {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+.review-text {
+    font-size: 0.9rem;
+    color: #cbd5f5;
+    line-height: 1.5;
+    opacity: 0.9;
 }
 
 /* Footer UI */
@@ -667,6 +823,24 @@ footer {
         width: 280px;
     }
 
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        width: 100%;
+        padding: 0 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        min-width: unset;
+        /* Allow shrinking if needed, but width 100% handles it */
+    }
+
     /* Products */
     .products-section {
         flex-direction: column;
@@ -732,6 +906,32 @@ footer {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+    }
+
+    /* Mobile Text & Box Fixes */
+    .main-title {
+        font-size: 2.5rem;
+        /* Reduced from 3.5rem */
+        word-wrap: break-word;
+        /* Prevent overflow */
+        padding: 0 10px;
+    }
+
+    .stats-container {
+        flex-wrap: wrap;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 0.85rem;
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
     }
 }
 
